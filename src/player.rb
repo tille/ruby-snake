@@ -13,11 +13,14 @@ class Player
   def initialize_snake
     block_1 = Block.new(window, 320, 240)
     block_2 = Block.new(window, 300, 240)
-    snake.push(block_1, block_2)
+    block_3 = Block.new(window, 280, 240)
+    snake.push(block_1, block_2, block_3)
   end
 
   def move
-    # pending to move each snake image
+    snake.each do |snake_block|
+      snake_block.move('right')
+    end
   end
 
   def draw

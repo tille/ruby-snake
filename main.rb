@@ -10,7 +10,11 @@ class GameWindow < Gosu::Window
   end
 
   def update
-    # TODO: execute @player.move each second
+    sec = Gosu::milliseconds / 100
+    if sec != @current_sec
+      @current_sec = sec
+      @player.move
+    end
   end
 
   def draw
