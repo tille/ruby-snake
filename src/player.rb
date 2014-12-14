@@ -35,6 +35,18 @@ class Player
     self.direction = 'down'
   end
 
+  def collect_block(target)
+    dist = Gosu::distance(snake_head.x, snake_head.y,
+                          target.x, target.y)
+    if dist < (snake_head.width / 2.0 + target.width / 2.0)
+      target.relocate
+    end
+  end
+
+  def snake_head
+    @head ||= snake.first
+  end
+
   # moves snake each 100 milliseconds
   def auto_move
     sec = Gosu::milliseconds / GAP
@@ -45,14 +57,18 @@ class Player
   end
 
   def move_head
-    snake.first.move( direction )
+    snake_head.move( direction )
   end
   private :move_head
 
   def move
     (0..snake.size-2).each do |i|
       pos = snake.size-i-1
-      snake[pos].locate_at( snake[pos-1].x, snake[pos-1].y )
+      new_pos = {
+        x: snake[pos-1].x,
+        y: snake[pos-1].y
+      }
+      snake[pos].locate_at(new_pos)
     end
     move_head
   end

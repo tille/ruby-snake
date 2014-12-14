@@ -19,6 +19,7 @@ class GameWindow < Gosu::Window
 
   def draw
     player.draw
+    player.collect_block(target)
     target.draw
   end
 end

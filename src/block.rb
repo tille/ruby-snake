@@ -3,12 +3,24 @@ class Block
 
   def initialize(window, args = {})
     @block_image = Gosu::Image.new(window, "media/block_3.png", false)
-    locate_at(args[:x], args[:y])
+    locate_at(args)
   end
 
-  def locate_at(x, y)
-    @x = x || (rand * 32).to_int * @block_image.width
-    @y = y || (rand * 24).to_int * @block_image.height
+  def locate_at(args = {})
+    @x = args[:x] || (rand * 32).to_int * @block_image.width
+    @y = args[:y] || (rand * 24).to_int * @block_image.height
+  end
+
+  def relocate
+    locate_at
+  end
+
+  def width
+    @block_image.width
+  end
+
+  def height
+    @block_image.height
   end
 
   def move(direction)
