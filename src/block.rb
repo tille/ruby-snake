@@ -22,6 +22,9 @@ class Block
       when 'right'
         @x += 20;
     end
+
+    @x %= 640
+    @y %= 480
   end
 
   def draw
