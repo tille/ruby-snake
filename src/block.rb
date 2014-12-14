@@ -2,7 +2,7 @@ class Block
   attr_reader :x, :y
 
   def initialize(window, x, y)
-    @block_image = Gosu::Image.new(window, "media/block_6.png", false)
+    @block_image = Gosu::Image.new(window, "media/block_3.png", false)
     locate_at(x, y)
   end
 
