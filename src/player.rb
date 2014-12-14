@@ -1,5 +1,5 @@
 class Player
-  attr_reader :score, :snake, :window
+  attr_reader :score, :snake
 
   VELOCITY = 20
 
@@ -11,9 +11,9 @@ class Player
   end
 
   def initialize_snake
-    block_1 = Block.new(window, 320, 240)
-    block_2 = Block.new(window, 300, 240)
-    block_3 = Block.new(window, 280, 240)
+    block_1 = Block.new(@window, 320, 240)
+    block_2 = Block.new(@window, 300, 240)
+    block_3 = Block.new(@window, 280, 240)
     snake.push(block_1, block_2, block_3)
   end
 
