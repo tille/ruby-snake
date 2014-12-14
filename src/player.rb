@@ -41,6 +41,7 @@ class Player
                           target.x, target.y)
     if dist < (snake_head.width / 2.0 + target.width / 2.0)
       target.relocate
+      self.score += 10
       beep.play
     end
   end

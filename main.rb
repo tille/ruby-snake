@@ -4,6 +4,7 @@ Dir["./src/*.rb"].each { |file| require file }
 class GameWindow < Gosu::Window
   attr_accessor :player, :target
   include Keyboard
+  include UI
 
   def initialize
     super(640, 480, false)
@@ -20,6 +21,7 @@ class GameWindow < Gosu::Window
   def draw
     player.draw
     player.collect_block(target)
+    draw_score(self, player)
     target.draw
   end
 end
