@@ -1,5 +1,6 @@
 require 'gosu'
 Dir["./src/*.rb"].each { |file| require file }
+Dir["./src/modules/*.rb"].each { |file| require file }
 
 class GameWindow < Gosu::Window
   attr_accessor :player, :target
