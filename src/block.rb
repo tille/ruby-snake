@@ -28,8 +28,6 @@ class Block
   end
 
   def draw
-    @block_image.draw(x - @block_image.width / 2.0,
-                      y - @block_image.height / 2.0,
-                      z_pos = 1)
+    @block_image.draw(x, y, z_pos = 1)
   end
 end
