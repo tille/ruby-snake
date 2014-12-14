@@ -3,23 +3,24 @@
 
 #   def initialize
 #     @block_image = Gosu::Image.new(self, "media/snake_block.jpg")
-#     warp
-#     @taken = false
+#     self.taken = false
+#     situate
 #   end
 
-#    def warp
-#      @x = rand * 640
-#      @y = rand * 480
+#    def situate
+#      self.x = rand * 640
+#      self.y = rand * 480
 #    end
 #    private :warp
 
 #   def move
-#     warp
-#     @taken = true
+#     situate
+#     self.taken = true
 #   end
 
 #   def draw
-#     img.draw(@x - img.width / 2.0, @y - img.height / 2.0,
-#         ZOrder::Block, 1, 1, Color::WHITE, :add)
+#     block_image.draw(x - block_image.width / 2.0,
+#                      y - block_image.height / 2.0,
+#                      z_pos = 1, 1, 1, Color::WHITE, :add)
 #   end
 # end
