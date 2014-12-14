@@ -1,10 +1,11 @@
 class Player
-  attr_accessor :score, :snake, :window, :direction
-  private :window, :snake
+  attr_accessor :score, :snake, :window, :direction, :beep
+  private :window, :snake, :beep
 
   GAP = 100
 
   def initialize(window)
+    self.beep = Gosu::Sample.new(window, "media/Beep.wav")
     self.score = 0
     self.snake = Array.new
     self.window = window
@@ -40,6 +41,7 @@ class Player
                           target.x, target.y)
     if dist < (snake_head.width / 2.0 + target.width / 2.0)
       target.relocate
+      beep.play
     end
   end
 
