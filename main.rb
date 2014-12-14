@@ -1,4 +1,6 @@
 require 'gosu'
+require './src/player.rb'
+require './src/block.rb'
 
 class GameWindow < Gosu::Window
   def initialize
