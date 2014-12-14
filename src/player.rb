@@ -1,35 +1,28 @@
 class Player
-  attr_reader :score
+  attr_reader :score, :snake, :window
 
   VELOCITY = 20
 
   def initialize(window)
-    @snake_block = Gosu::Image.new(window, "media/snake_block.jpg", false)
-    @player.warp(320, 240)
     @score = 0
+    @snake = Array.new
+    @window = window
+    initialize_snake
   end
 
-  def snake
-    [@snake_block]
+  def initialize_snake
+    block_1 = Block.new(window, 320, 240)
+    block_2 = Block.new(window, 300, 240)
+    snake.push(block_1, block_2)
   end
-
-  def warp(x, y)
-    @x, @y = x, y
-  end
-  private :warp
 
   def move
     # pending to move each snake image
   end
 
   def draw
-    # pending
+    snake.each do |snake_block|
+      snake_block.draw
+    end
   end
-
-  # def collect_block?(block)
-  #   distance_to_collision = block.height / 2.0 + player.head / 2.0
-  #   block_distance = Gosu::distance(@x, @y, player.head.x, player.head.x)
-  #   block_distance < distance_to_collision
-  # end
-
 end
