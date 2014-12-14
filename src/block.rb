@@ -1,14 +1,14 @@
 class Block
   attr_reader :x, :y
 
-  def initialize(window, x, y)
+  def initialize(window, args = {})
     @block_image = Gosu::Image.new(window, "media/block_3.png", false)
-    locate_at(x, y)
+    locate_at(args[:x], args[:y])
   end
 
   def locate_at(x, y)
-    @x = x || rand * 640
-    @y = y || rand * 480
+    @x = x || (rand * 32).to_int * @block_image.width
+    @y = y || (rand * 24).to_int * @block_image.height
   end
 
   def move(direction)

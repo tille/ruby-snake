@@ -2,13 +2,14 @@ require 'gosu'
 Dir["./src/*.rb"].each { |file| require file }
 
 class GameWindow < Gosu::Window
-  attr_accessor :player
+  attr_accessor :player, :target
   include Keyboard
 
   def initialize
     super(640, 480, false)
     self.caption = "Ruby Snake by T!ll3"
     self.player = Player.new(self)
+    self.target = Block.new(self)
   end
 
   def update
@@ -18,6 +19,7 @@ class GameWindow < Gosu::Window
 
   def draw
     player.draw
+    target.draw
   end
 end
 

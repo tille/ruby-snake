@@ -2,7 +2,7 @@ class Player
   attr_accessor :score, :snake, :window, :direction
   private :window, :snake
 
-  VELOCITY = 20
+  GAP = 100
 
   def initialize(window)
     self.score = 0
@@ -13,9 +13,9 @@ class Player
   end
 
   def initialize_snake
-    block_1 = Block.new(window, 320, 240)
-    block_2 = Block.new(window, 300, 240)
-    block_3 = Block.new(window, 280, 240)
+    block_1 = Block.new(window, { x: 320, y: 240 })
+    block_2 = Block.new(window, { x: 300, y: 240 })
+    block_3 = Block.new(window, { x: 280, y: 240 })
     snake.push(block_1, block_2, block_3)
   end
 
@@ -37,7 +37,7 @@ class Player
 
   # moves snake each 100 milliseconds
   def auto_move
-    sec = Gosu::milliseconds / 100
+    sec = Gosu::milliseconds / GAP
     if sec != @current_sec
       @current_sec = sec
       self.move
