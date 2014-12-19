@@ -10,6 +10,7 @@ class Player
     self.snake = Array.new
     self.window = window
     self.direction = 'right'
+    @callbacks = [];
     initialize_snake
   end
 
@@ -36,18 +37,30 @@ class Player
     self.direction = 'down'
   end
 
-  def collect_block(target)
+  def collision? target
     dist = Gosu::distance(snake_head.x, snake_head.y,
                           target.x, target.y)
-    if dist < (snake_head.width / 2.0 + target.width / 2.0)
-      target.relocate
-      self.score += 10
+    max_distance = (snake_head.width / 2.0 + target.width / 2.0)
+
+    if dist < max_distance
       beep.play
+      self.score += 10
+
+      # marks the block to be collected
+      @callbacks.push({
+        x: target.x,
+        y: target.y
+      })
+      target.relocate
     end
   end
 
   def snake_head
-    @head ||= snake.first
+    snake.first
+  end
+
+  def snake_tail
+    snake.last
   end
 
   # moves snake each 100 milliseconds
@@ -55,8 +68,27 @@ class Player
     sec = Gosu::milliseconds / GAP
     if sec != @current_sec
       @current_sec = sec
-      self.move
+      step_up
     end
+  end
+
+  def step_up
+    block = Block.new(window, { x: snake_tail.x, y: snake_tail.y })
+    add_snake_block(block) if collect_block?
+    move
+  end
+
+  def add_snake_block tail
+    snake.push(tail)
+  end
+
+  def collect_block?
+    old_size = @callbacks.size
+    new_size = @callbacks.delete_if do |callback|
+      snake_tail.x == callback[:x] &&
+      snake_tail.y == callback[:y]
+    end.size
+    old_size != new_size
   end
 
   def move_head

@@ -21,7 +21,7 @@ class GameWindow < Gosu::Window
 
   def draw
     player.draw
-    player.collect_block(target)
+    player.collision? target
     draw_score(self, player)
     target.draw
   end

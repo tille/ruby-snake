@@ -1,8 +1,9 @@
 Ruby Snake by T!ll3
 ===================
 
-HEY, this a simple application of the famous snake game.
-It was created using the amazing GOSE framework.
+Snake is an open source 2D game that was created with Ruby using Gosugame
+
+[![screen_1](https://github.com/Tille/ruby-snake/raw/master/screenshots/shot_1.png)](https://github.com/Tille/ruby-snake/raw/master/app/main.rb)
 
 Compile and Launch the game
 
