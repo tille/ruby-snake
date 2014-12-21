@@ -3,7 +3,7 @@ class Player
   private :window, :snake, :beep
 
   def initialize(window)
-    self.beep = Gosu::Sample.new(window, "media/Beep.wav")
+    self.beep = Gosu::Sample.new(window, "app/media/Beep.wav")
     self.score = 0
     self.snake = Array.new
     self.window = window

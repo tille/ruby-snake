@@ -4,7 +4,7 @@ class Block
   private :block_image
 
   def initialize(window, args = {})
-    self.block_image = Gosu::Image.new(window, "media/block_3.png", false)
+    self.block_image = Gosu::Image.new(window, "app/media/block_3.png", false)
     locate_at(args)
   end
 

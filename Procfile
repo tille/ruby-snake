@@ -1,0 +1,1 @@
+play: ruby main.rb
