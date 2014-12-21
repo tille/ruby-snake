@@ -1,8 +1,6 @@
 class Player
-  attr_accessor :score, :snake, :window, :direction, :beep
+  attr_accessor :score, :snake, :window, :direction, :beep, :gap
   private :window, :snake, :beep
-
-  GAP = 100
 
   def initialize(window)
     self.beep = Gosu::Sample.new(window, "media/Beep.wav")
@@ -10,6 +8,7 @@ class Player
     self.snake = Array.new
     self.window = window
     self.direction = 'right'
+    @gap = 100
     @callbacks = []
     @loaded_blocks = load_blocks
     initialize_snake
@@ -48,7 +47,7 @@ class Player
     self.direction = 'down'
   end
 
-  def collision? target
+  def collision(target)
     dist = Gosu::distance(snake_head.x, snake_head.y,
                           target.x, target.y)
     max_distance = (snake_head.width / 2.0 + target.width / 2.0)
@@ -66,6 +65,17 @@ class Player
     end
   end
 
+  def collision_snake?
+    (1..snake.size-1).each do |i|
+      snake_block = snake[i]
+      if snake_head.x == snake_block.x &&
+        snake_head.y == snake_block.y
+        return true
+      end
+    end
+    return false
+  end
+
   def snake_head
     snake.first
   end
@@ -76,7 +86,7 @@ class Player
 
   # moves snake each 100 milliseconds
   def auto_move
-    sec = Gosu::milliseconds / GAP
+    sec = Gosu::milliseconds / @gap
     if sec != @current_sec
       @current_sec = sec
       step_up

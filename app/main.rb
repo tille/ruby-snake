@@ -20,10 +20,11 @@ class GameWindow < Gosu::Window
   end
 
   def draw
-    player.draw
-    player.collision? target
+    player.collision(target)
+    game_over(self, player) if player.collision_snake?
     draw_score(self, player)
     target.draw
+    player.draw
   end
 end
 
