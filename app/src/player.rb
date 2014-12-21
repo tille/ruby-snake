@@ -10,8 +10,19 @@ class Player
     self.snake = Array.new
     self.window = window
     self.direction = 'right'
-    @callbacks = [];
+    @callbacks = []
+    @loaded_blocks = load_blocks
     initialize_snake
+  end
+
+  def load_blocks
+    # since create blocks in linking time
+    # reduce game performace, we'll use this blocks array
+    # to load blocks at the beginning and just move them
+    # at collect a new block
+    (0..40).inject [] do |memo, n|
+      memo.push Block.new(window, {x: 0, y: 0})
+    end
   end
 
   def initialize_snake
@@ -73,13 +84,16 @@ class Player
   end
 
   def step_up
-    block = Block.new(window, { x: snake_tail.x, y: snake_tail.y })
-    add_snake_block(block) if collect_block?
+    add_snake_block if collect_block?
     move
   end
 
-  def add_snake_block tail
-    snake.push(tail)
+  def add_snake_block
+    new_block = @loaded_blocks.pop
+    new_block.locate_at({
+      x: snake_tail.x, y: snake_tail.y
+    })
+    snake.push(new_block)
   end
 
   def collect_block?
