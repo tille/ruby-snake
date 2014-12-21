@@ -1,5 +1,5 @@
 class Player
-  attr_accessor :score, :snake, :window, :direction, :beep, :gap
+  attr_accessor :score, :snake, :window, :direction, :beep, :gap, :game_over
   private :window, :snake, :beep
 
   def initialize(window)
@@ -11,6 +11,7 @@ class Player
     @gap = 100
     @callbacks = []
     @loaded_blocks = load_blocks
+    @game_over = false
     initialize_snake
   end
 
@@ -86,11 +87,14 @@ class Player
 
   # moves snake each 100 milliseconds
   def auto_move
-    sec = Gosu::milliseconds / @gap
-    if sec != @current_sec
-      @current_sec = sec
+    if game_over == false && current_sec != @last_sec
+      @last_sec = current_sec
       step_up
     end
+  end
+
+  def current_sec
+    Gosu::milliseconds / @gap
   end
 
   def step_up

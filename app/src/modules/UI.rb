@@ -16,6 +16,7 @@ module UI
 
     def game_over(window, player)
       player.gap = 1000000
+      player.game_over = true
       message = "Game Over"
       default_font(window).draw(message,
         x_pos = 640/2.0,
