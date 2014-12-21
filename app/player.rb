@@ -17,9 +17,9 @@ class Player
 
   def load_blocks
     # since create blocks in linking time
-    # reduce game performace, we'll use this blocks array
-    # to load blocks at the beginning and just move them
-    # at collect a new block
+    # reduce the game-performace, we'll use an array
+    # to load blocks and move them
+    # at collect new blocks
     (0..40).inject [] do |memo, n|
       memo.push Block.new(window, {x: 0, y: 0})
     end
