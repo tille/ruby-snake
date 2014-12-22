@@ -1,5 +1,5 @@
-Ruby Snake by T!ll3
-===================
+Ruby Snake
+==========
 
 Snake is an open source 2D game that was created with Ruby using Gosugame
 
