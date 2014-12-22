@@ -14,6 +14,14 @@ module UI
                 z_pos = 1, 1.0, 1.0, 0xffffff00)
     end
 
+    def game_over?
+      @player.game_over == true
+    end
+
+    def game_over=(val)
+      @player.game_over = val
+    end
+
     def game_over(window)
       @player.gap = 2**30 # infinity
       @player.game_over = true

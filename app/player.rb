@@ -60,8 +60,11 @@ class Player
     end
   end
 
-  # TODO: has a weird bug
   def collision_snake?
+    # (1..@snake.size-1).inject false do |memo, i|
+    #   memo = true if collision?( @snake[i], snake_head )
+    # end
+
     (1..@snake.size-1).each do |i|
       snake_block = @snake[i]
       return true if collision?(snake_block, snake_head)
@@ -125,16 +128,13 @@ class Player
   private :move
 
   def move_body
-    # moves each block to its
-    # predecessor's position
-
+    # moves each block to its predecessor's position
     (0..@snake.size-2).each do |i|
       pos = @snake.size-i-1
-      new_pos = {
+      @snake[pos].locate_at({
         x: @snake[pos-1].x,
         y: @snake[pos-1].y
-      }
-      @snake[pos].locate_at(new_pos)
+      })
     end
   end
   private :move_body
