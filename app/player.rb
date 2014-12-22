@@ -64,12 +64,9 @@ class Player
   def collision_snake?
     (1..@snake.size-1).each do |i|
       snake_block = @snake[i]
-      if snake_head.x == snake_block.x &&
-        snake_head.y == snake_block.y
-        return true
-      end
+      return true if collision?(snake_block, snake_head)
     end
-    return false
+    false
   end
 
   def snake_head
