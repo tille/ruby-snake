@@ -18,13 +18,12 @@ module UI
       @player.game_over == true
     end
 
-    def game_over=(val)
-      @player.game_over = val
-    end
-
-    def game_over(window)
+    def game_over
       @player.gap = 2**30 # infinity
       @player.game_over = true
+    end
+
+    def draw_game_over(window)
       message = "Game Over"
       default_font(window).draw(message,
         x_pos = 640/2.0,

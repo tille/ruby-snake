@@ -17,7 +17,7 @@ class GameWindow < Gosu::Window
   def update
     handle_keys
     @player.auto_move
-    @player.game_over = true if @player.collision_snake?
+    game_over if @player.collision_snake?
   end
 
   def draw
@@ -25,7 +25,7 @@ class GameWindow < Gosu::Window
     @player.draw
     @target.draw
     draw_score(self)
-    game_over(self) if game_over?
+    draw_game_over(self) if game_over?
   end
 end
 
