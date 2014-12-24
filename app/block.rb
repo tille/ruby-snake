@@ -1,5 +1,8 @@
 class Block
+  extend Forwardable
+
   attr_reader :x, :y
+  def_delegators :@block_image, :width, :height
 
   def initialize(window, args = {})
     path = "app/media/block_3.png"
@@ -8,20 +11,12 @@ class Block
   end
 
   def locate_at(args = {})
-    @x = args[:x] || (rand * 32).to_i * @block_image.width
-    @y = args[:y] || (rand * 24).to_i * @block_image.height
+    @x = args[:x] || (rand * 32).to_i * self.width
+    @y = args[:y] || (rand * 24).to_i * self.height
   end
 
   def relocate
     locate_at
-  end
-
-  def width
-    @block_image.width
-  end
-
-  def height
-    @block_image.height
   end
 
   def move(direction)
