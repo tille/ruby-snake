@@ -20,18 +20,22 @@ class Block
   def move(direction)
     case direction
       when 'up'
-        @y -= 20;
+        @y -= 20
       when 'down'
-        @y += 20;
+        @y += 20
       when 'left'
-        @x -= 20;
+        @x -= 20
       when 'right'
-        @x += 20;
+        @x += 20
     end
+    set_boundary
+  end
 
+  def set_boundary
     @x %= 640
     @y %= 480
   end
+  private :set_boundary
 
   def draw
     @block_image.draw(@x, @y, z_pos = 1)
