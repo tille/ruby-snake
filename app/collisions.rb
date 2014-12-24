@@ -26,15 +26,9 @@ module Base
     private :collision?
 
     def collision_snake?
-      # (1..@snake.size-1).inject false do |memo, i|
-      #   memo = true if collision?( @snake[i], snake_head )
-      # end
-
-      (1..@snake.size-1).each do |i|
-        snake_block = @snake[i]
-        return true if collision?(snake_block, snake_head)
+      !!(1..@snake.size-1).detect do |i|
+        collision?(@snake[i], snake_head)
       end
-      false
     end
 
     def collect_block?
