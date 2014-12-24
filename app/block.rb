@@ -2,6 +2,7 @@ class Block
   extend Forwardable
 
   attr_reader :x, :y
+
   def_delegators :@block_image, :width, :height
 
   def initialize(window, args = {})
@@ -14,10 +15,7 @@ class Block
     @x = args[:x] || (rand * 32).to_i * self.width
     @y = args[:y] || (rand * 24).to_i * self.height
   end
-
-  def relocate
-    locate_at
-  end
+  alias_method :relocate, :locate_at
 
   def move(direction)
     case direction
