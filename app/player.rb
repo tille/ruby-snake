@@ -8,7 +8,7 @@ class Player < Base
     @beep = Gosu::Sample.new(window, "app/media/Beep.wav")
     @score = 0
     @snake = Array.new
-    @direction = 'right'
+    @direction = :right
     @gap = 80
     @callbacks = []
     @loaded_blocks = load_blocks(window)
@@ -28,6 +28,9 @@ class Player < Base
     @direction = direction
   end
 
+  # =====================
+  # pending to move to main.rb
+
   # moves snake each 100 milliseconds
   def auto_move
     if @game_over == false && current_sec != @last_sec
@@ -39,6 +42,8 @@ class Player < Base
   def current_sec
     Gosu::milliseconds / @gap
   end
+
+  # =====================
 
   def move_and_collect
     add_snake_block if collect_block?

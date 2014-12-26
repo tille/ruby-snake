@@ -17,14 +17,14 @@ class Block < Base
 
   def move(direction)
     case direction
-      when 'up'
-        @y -= 20
-      when 'down'
-        @y += 20
-      when 'left'
-        @x -= 20
-      when 'right'
-        @x += 20
+      when :up
+        @y -= self.width
+      when :down
+        @y += self.width
+      when :left
+        @x -= self.height
+      when :right
+        @x += self.height
     end
     set_boundary
   end
