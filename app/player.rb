@@ -1,4 +1,4 @@
-class Player < Base::Collisions
+class Player < Base
   attr_accessor :score, :direction, :gap, :game_over
 
   def initialize(window)
