@@ -1,5 +1,4 @@
-class Block
-  extend Forwardable
+class Block < Base
 
   attr_reader :x, :y
   def_delegators :@block_image, :width, :height

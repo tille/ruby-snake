@@ -1,6 +1,9 @@
 class Player < Base
   attr_accessor :score, :direction, :gap, :game_over
 
+  def_delegator :@snake, :first, :snake_head
+  def_delegator :@snake, :last, :snake_tail
+
   def initialize(window)
     @beep = Gosu::Sample.new(window, "app/media/Beep.wav")
     @score = 0
@@ -23,14 +26,6 @@ class Player < Base
 
   def turn(direction)
     @direction = direction
-  end
-
-  def snake_head
-    @snake.first
-  end
-
-  def snake_tail
-    @snake.last
   end
 
   # moves snake each 100 milliseconds
