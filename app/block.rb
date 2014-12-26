@@ -2,7 +2,6 @@ class Block
   extend Forwardable
 
   attr_reader :x, :y
-
   def_delegators :@block_image, :width, :height
 
   def initialize(window, args = {})

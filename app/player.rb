@@ -84,8 +84,8 @@ class Player < Base::Collisions
 
   def move_body
     # moves each block to its predecessor's position
-    (0..@snake.size-2).each do |i|
-      pos = @snake.size-i-1
+    (1..@snake.size-1).each do |i|
+      pos = @snake.size-i
       @snake[pos].locate_at({
         x: @snake[pos-1].x,
         y: @snake[pos-1].y
