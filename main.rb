@@ -20,10 +20,14 @@ class GameWindow < Gosu::Window
     handle_keys
     snake_auto_movement
     game_over if @player.collision_snake?
+
+    if collision?(snake_head, @target)
+      collect_block @target
+      @target.relocate
+    end
   end
 
   def draw
-    @player.collision(@target)
     @player.draw
     @target.draw
     draw_score(self)

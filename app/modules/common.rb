@@ -1,4 +1,5 @@
 module Common
+  include Collisions
 
   private
     def game_over?
@@ -22,6 +23,14 @@ module Common
 
     def current_time
       Gosu::milliseconds / @player.gap
+    end
+
+    def snake_head
+      @player.snake_head
+    end
+
+    def collect_block(target)
+      @player.collect_block target
     end
 
     def game_over
