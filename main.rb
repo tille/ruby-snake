@@ -6,6 +6,7 @@ require_all 'app'
 
 class GameWindow < Gosu::Window
   include Keyboard
+  include Common
   include UI
 
   def initialize
@@ -17,7 +18,7 @@ class GameWindow < Gosu::Window
 
   def update
     handle_keys
-    @player.auto_move
+    snake_auto_movement
     game_over if @player.collision_snake?
   end
 

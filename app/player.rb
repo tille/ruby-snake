@@ -28,28 +28,10 @@ class Player < Base
     @direction = direction
   end
 
-  # =====================
-  # pending to move to main.rb
-
-  # moves snake each 100 milliseconds
-  def auto_move
-    if @game_over == false && current_sec != @last_sec
-      @last_sec = current_sec
-      move_and_collect
-    end
-  end
-
-  def current_sec
-    Gosu::milliseconds / @gap
-  end
-
-  # =====================
-
   def move_and_collect
     add_snake_block if collect_block?
     move
   end
-  private :move_and_collect
 
   def add_snake_block
     new_block = @loaded_blocks.pop
