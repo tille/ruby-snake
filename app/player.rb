@@ -33,6 +33,17 @@ class Player < Base
     move
   end
 
+  def collect_block(target)
+    @beep.play
+    @score += 10
+
+    # marks the block to be collected
+    @callbacks.push({
+      x: target.x,
+      y: target.y
+    })
+  end
+
   def add_snake_block
     new_block = @loaded_blocks.pop
     new_block.locate_at({

@@ -1,16 +1,5 @@
 module Collisions
 
-  def collect_block(target)
-    @beep.play
-    @score += 10
-
-    # marks the block to be collected
-    @callbacks.push({
-      x: target.x,
-      y: target.y
-    })
-  end
-
   def collision?(obj_1, obj_2)
     dist = Gosu::distance(
       obj_1.x, obj_1.y,
