@@ -13,17 +13,6 @@ class Player < Base
     initialize_snake(window)
   end
 
-  def load_blocks(window)
-    # since create blocks in linking time
-    # reduce the game-performace, we'll use an array
-    # to load blocks and move them
-    # at collect new blocks
-    (0..40).inject [] do |memo, n|
-      memo.push Block.new(window, {x: 0, y: 0})
-    end
-  end
-  private :load_blocks
-
   def initialize_snake(window)
     block_1 = Block.new(window, { x: 320, y: 240 })
     block_2 = Block.new(window, { x: 300, y: 240 })
