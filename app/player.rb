@@ -32,6 +32,29 @@ class Player < Base
     add_snake_block if collect_block?
     move
   end
+  
+  def move
+    move_body
+    move_head
+  end
+  private :move
+  
+  def move_body
+    # moves each block to its predecessor's position
+    (1..@snake.size-1).each do |i|
+      pos = @snake.size-i
+      @snake[pos].locate_at({
+        x: @snake[pos-1].x,
+        y: @snake[pos-1].y
+      })
+    end
+  end
+  private :move_body
+  
+  def move_head
+    snake_head.move( @direction )
+  end
+  private :move_head
 
   def collect_block(target)
     @beep.play
@@ -52,29 +75,6 @@ class Player < Base
     @snake.push(new_block)
   end
   private :add_snake_block
-
-  def move_head
-    snake_head.move( @direction )
-  end
-  private :move_head
-
-  def move
-    move_body
-    move_head
-  end
-  private :move
-
-  def move_body
-    # moves each block to its predecessor's position
-    (1..@snake.size-1).each do |i|
-      pos = @snake.size-i
-      @snake[pos].locate_at({
-        x: @snake[pos-1].x,
-        y: @snake[pos-1].y
-      })
-    end
-  end
-  private :move_body
 
   def draw
     @snake.each{ |snake_block| snake_block.draw }
