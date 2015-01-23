@@ -1,7 +1,7 @@
 Ruby Snake
 ==========
 
-Snake is an open source 2D game that was created with Ruby using Gosugame
+Snake is an open source 2D game that was created with Ruby using [Gosu](http://www.libgosu.org/)
 
 ## Setup
 To install all the dependencies, run:
