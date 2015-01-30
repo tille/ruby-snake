@@ -1,3 +1,5 @@
+[![Dependency Status](https://gemnasium.com/tille/ruby-snake.svg)](https://gemnasium.com/tille/ruby-snake)
+
 Ruby Snake
 ==========
 
