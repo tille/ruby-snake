@@ -11,7 +11,7 @@ Releasy::Project.new do
   exclude_encoding
 
   add_build :windows_folder do
-    icon "app/media/icon.ico"
+    icon "public/icon.ico"
     add_package :exe
   end
 
