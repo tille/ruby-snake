@@ -1,21 +1,27 @@
-require 'rubygems'
-require 'bundler/setup' # Releasy doesn't require that your application uses bundler, but it does make things easier.
+require 'ocra'
 require 'releasy'
+require 'bundler/setup'
 
 Releasy::Project.new do
   name "Ruby Snake"
   version '0.0.1'
 
   executable "main.rb"
-  files `git ls-files`.split("\n")
-  files.exclude '.gitignore'
-
-  exposed_files ["README.txt", "LICENSE"]
-  add_link "http://github.com/tille/ruby-snake", "Ruby Snake"
+  files ["app/**/*.*"]
   exclude_encoding
 
-  add_build :windows_standalone do
+  add_build :windows_folder do
     icon "app/media/icon.ico"
     add_package :exe
   end
+
+  add_build :windows_wrapped do
+    wrapper "wrappers/ruby-1.9.3-p551-i386-mingw32.7z"
+    executable_type :windows
+    exclude_tcl_tk
+    add_package :zip
+  end
 end
+
+
+
