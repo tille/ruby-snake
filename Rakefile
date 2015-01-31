@@ -1,12 +1,13 @@
-require 'ocra'
-require 'releasy'
-require 'bundler/setup'
+require 'bundler'
+Bundler.require :development
+ 
+require 'bundler/setup' unless defined?(OSX_EXECUTABLE) or ENV['OCRA_EXECUTABLE'] 
 
 Releasy::Project.new do
   name "Ruby Snake"
   version '0.0.1'
 
-  executable "main.rb"
+  executable "Game.rb"
   files ["app/**/*.*"]
   exclude_encoding
 
