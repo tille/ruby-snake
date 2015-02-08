@@ -6,3 +6,8 @@ gem 'gosu'
 gem 'foreman'
 gem 'releasy', '~> 0.2.2'
 gem 'require_all'
+
+group :test do
+  gem 'rspec'
+end
+
