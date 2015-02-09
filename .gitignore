@@ -3,3 +3,4 @@ tutorial.rb
 game.rb
 Gemfile.lock
 *.swp
+*.swo
