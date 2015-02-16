@@ -13,12 +13,16 @@ bundle install
 ```
 <blockquote>
 Be sure of use the right ruby-version specified in .ruby-version before run bundler
-If ``Gosu`` complains during the setup follow this page and install its dependencies for both C++ and Ruby
-https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux
+If ``Gosu`` complains during the setup follow this page and install its dependencies for both C++ and Ruby.
 </blockquote>
+
+Dependencies: [Linux](https://github.com/jlnr/gosu/wiki/Getting-Started-on-Linux/) / 
+[OS-X](https://github.com/jlnr/gosu/wiki/Getting-Started-on-OS-X/)
 
 Next using foreman we can boot the application.
 
 ```
 $ foreman start
 ```
+
+Run tests typing: ``rspec``
